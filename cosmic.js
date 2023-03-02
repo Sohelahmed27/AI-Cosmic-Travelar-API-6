@@ -10,9 +10,12 @@ const loadData =async ()=>{
  }
 }
 const displayData =(tools)=>{
-  console.log(tools)
+  console.log(tools);
+   //show 6 card
+   tools = tools.slice(0, 6);
   const container = document.getElementById('card')
   tools.forEach(tool =>{
+   
     const div = document.createElement('div');
   div.innerHTML =`<div class="col">
   <div class="card h-100">
