@@ -37,7 +37,7 @@ const displayData =(tools, typeAll) => {
    const div = document.createElement('div');
   div.innerHTML =`<div class="col">
   <div class="card h-100">
-    <img src="${tool.image
+    <img class="img-fluid" src="${tool.image
     }" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Features</h5>
@@ -53,9 +53,8 @@ const displayData =(tools, typeAll) => {
       <date><img src='image/cad.png' class='m-2'>${tool.published_in
       }</date>
       </div>
-      <button type="button" class="btn btn-light"><img src='image/next-button (1).png'></button>
+      <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#cosmicAi"><img src='image/next-button (1).png'></button>
       <div>
-      
       </div>
     </div>
   </div>
@@ -78,7 +77,6 @@ const toggleSpinner = isLoading =>{
   
 }
 document.getElementById('btn-see-more').addEventListener('click', () =>{
-  
   loadData();
   //Start Loadder
   toggleSpinner(true);
