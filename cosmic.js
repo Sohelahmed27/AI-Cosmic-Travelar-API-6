@@ -15,7 +15,15 @@ const displayData =(tools, typeAll) => {
   //  show 6 card
    if(typeAll){
     tools = tools.slice(0, 6);
-    
+    }
+    // ShowAll Button
+
+    const showAllButton = document.getElementById('btn-see-more');
+    if(tools.length<=6){
+      showAllButton.classList.remove('d-none')
+    }
+    else{
+      showAllButton.classList.add('d-none')
     }
     
 
