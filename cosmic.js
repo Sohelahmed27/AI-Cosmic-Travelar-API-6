@@ -26,13 +26,19 @@ const displayData =(tools)=>{
       <ol>
           <li>${tool.features[0]}</li>
           <li>${tool.features[1]}</li>
-          <li>${tool.features[2]}</li>
+          <li>${tool.features[2]? tool.features[2]:'No result found'}</li>
       </ol>
     </div>
-    <div class="card-footer">
+    <div class="card-footer d-flex justify-content-between">
+      <div>
       <h5>${tool.name}</h5>
-      <date>${tool.published_in
+      <date><img src='image/cad.png' class='m-2'>${tool.published_in
       }</date>
+      </div>
+      <button type="button" class="btn btn-light"><img src='image/next-button (1).png'></button>
+      <div>
+      
+      </div>
     </div>
   </div>
 </div>`
