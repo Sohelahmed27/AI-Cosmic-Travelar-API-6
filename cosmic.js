@@ -1,22 +1,32 @@
-const loadData =async ()=>{
+const loadData =async (typeAll)=>{
  try{
   const url =`https://openapi.programming-hero.com/api/ai/tools`;
  const response = await fetch(url);
  const data = await response.json();
- displayData(data.data.tools);
+ displayData(data.data.tools, typeAll);
  }
  catch (err) {
   console.log(err);
  }
 }
-const displayData =(tools)=>{
+const displayData =(tools, typeAll) => {
   console.log(tools);
-   //show 6 card
-   tools = tools.slice(0, 6);
-  const container = document.getElementById('card')
-  tools.forEach(tool =>{
-   
-    const div = document.createElement('div');
+  
+  //  show 6 card
+   if(typeAll){
+    tools = tools.slice(0, 6);
+    
+    }
+    
+
+  const container = document.getElementById('card');
+  
+// Clear the former card
+  container.innerText ='';
+
+  //Show Card 
+   tools.forEach(tool =>{
+   const div = document.createElement('div');
   div.innerHTML =`<div class="col">
   <div class="card h-100">
     <img src="${tool.image
@@ -43,9 +53,9 @@ const displayData =(tools)=>{
   </div>
 </div>`
 container.appendChild(div);
-
-
-  });
-  
+});
 }
-loadData()
+document.getElementById('btn-see-more').addEventListener('click', () =>{
+  loadData();
+})
+loadData("typeAll");
