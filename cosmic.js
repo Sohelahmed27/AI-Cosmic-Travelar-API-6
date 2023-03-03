@@ -30,7 +30,9 @@ const displayData =(tools)=>{
       </ol>
     </div>
     <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
+      <h5>${tool.name}</h5>
+      <date>${tool.published_in
+      }</date>
     </div>
   </div>
 </div>`
