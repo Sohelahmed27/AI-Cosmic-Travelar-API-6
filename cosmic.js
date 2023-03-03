@@ -62,8 +62,26 @@ const displayData =(tools, typeAll) => {
 </div>`
 container.appendChild(div);
 });
+//Stop loadder
+   toggleSpinner(false);
+}
+//Spinner
+
+const toggleSpinner = isLoading =>{
+  const spinner = document.getElementById('spinner');
+  if(isLoading){
+    spinner.classList.remove('d-none');
+  }
+  else{
+    spinner.classList.add('d-none')
+  }
+  
 }
 document.getElementById('btn-see-more').addEventListener('click', () =>{
+  
   loadData();
+  //Start Loadder
+  toggleSpinner(true);
 })
+toggleSpinner(true);
 loadData("typeAll");
