@@ -86,23 +86,18 @@ const displaySingleData = qualities=>{
       document.getElementById('col-3').innerHTML = `<div class='border border-secondary-subtle p-2 text-center'>
       <h5 class='text-warning text-bold'>${qualities.pricing[2].price}</h5>
       <h5 class='text-info text-bold'>${qualities.pricing[2].plan}</h5></div>`;
-      document.getElementById('feature').innerHTML = `<ol>
-      <li>${qualities.features.features_name
-      }</li>
-      <li></li>
-      <li></li>
-      </ol>`
-      document.getElementById('integration').innerHTML = `<ol>
-      <li>${qualities.features.features_name
-      }</li>
-      <li></li>
-      <li></li>
-      </ol>`
+     
+      document.getElementById('feature-1').innerHTML= `<li>${qualities.features.feature_name}</li>`
 
+      document.getElementById('integration').innerHTML= `<li>${qualities.integrations[0]}</li>
+      <li>${qualities.integrations[1]}</li>
+      <li>${qualities.integrations[2]}</li>`
+      
       const modalCard2= document.getElementById('modal-card2');
       const div = document.createElement('div');
       div.innerHTML =`<div  class="card">
-      <img src="${qualities.image_link[0]
+      <img src="${qualities.image_link[0] ? qualities.image_link[0]:qualities.logo
+      }"
       }" class="card-img-top" alt="...">
       <div class="card-body text-center">
         <h5 class="card-title">${qualities.input_output_examples[0].input}</h5>
@@ -110,8 +105,9 @@ const displaySingleData = qualities=>{
       </div>
     </div>`;
     modalCard2.appendChild(div);
-    
-     }
+    }
+     
+
   
 
 //Spinner
