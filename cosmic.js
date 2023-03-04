@@ -53,17 +53,67 @@ const displayData =(tools, typeAll) => {
       <date><img src='image/cad.png' class='m-2'>${tool.published_in
       }</date>
       </div>
-      <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#cosmicAi"><img src='image/next-button (1).png'></button>
       <div>
-      </div>
+      <button onclick="singleData('${tool.id}')" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#cosmicAi"><img src='image/next-button (1).png'></img></button>
+    </div>
     </div>
   </div>
 </div>`
 container.appendChild(div);
 });
+
 //Stop loadder
    toggleSpinner(false);
 }
+
+const singleData =async (id)=>{
+  const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displaySingleData(data.data);
+}
+
+const displaySingleData = qualities=>{
+      console.log(qualities)
+      
+      document.getElementById('description').innerText = qualities.description;
+      document.getElementById('col-1').innerHTML = `<div class='border border-secondary-subtle p-3 text-center'>
+      <h5 class='text-warning fw-semibold'>${qualities.pricing[0].price}</h5>
+      <h5 class='text-info text-bold'>${qualities.pricing[0].plan}</h5></div>`
+      document.getElementById('col-2').innerHTML = `<div class='border border-secondary-subtle p-3 text-center'>
+      <h5 class='text-warning text-bold'>${qualities.pricing[1].price}</h5>
+      <h5 class='text-info text-bold'>${qualities.pricing[1].plan}</h5></div>`;
+      document.getElementById('col-3').innerHTML = `<div class='border border-secondary-subtle p-2 text-center'>
+      <h5 class='text-warning text-bold'>${qualities.pricing[2].price}</h5>
+      <h5 class='text-info text-bold'>${qualities.pricing[2].plan}</h5></div>`;
+      document.getElementById('feature').innerHTML = `<ol>
+      <li>${qualities.features.features_name
+      }</li>
+      <li></li>
+      <li></li>
+      </ol>`
+      document.getElementById('integration').innerHTML = `<ol>
+      <li>${qualities.features.features_name
+      }</li>
+      <li></li>
+      <li></li>
+      </ol>`
+
+      const modalCard2= document.getElementById('modal-card2');
+      const div = document.createElement('div');
+      div.innerHTML =`<div  class="card">
+      <img src="${qualities.image_link[0]
+      }" class="card-img-top" alt="...">
+      <div class="card-body text-center">
+        <h5 class="card-title">${qualities.input_output_examples[0].input}</h5>
+        <p class="card-text">${qualities.input_output_examples[0].output}</p>
+      </div>
+    </div>`;
+    modalCard2.appendChild(div);
+    
+     }
+  
+
 //Spinner
 
 const toggleSpinner = isLoading =>{
@@ -74,12 +124,15 @@ const toggleSpinner = isLoading =>{
   else{
     spinner.classList.add('d-none')
   }
-  
-}
-document.getElementById('btn-see-more').addEventListener('click', () =>{
+  }
+
+//Show all
+  document.getElementById('btn-see-more').addEventListener('click', () =>{
   loadData();
   //Start Loadder
   toggleSpinner(true);
 })
 toggleSpinner(true);
 loadData("typeAll");
+
+
