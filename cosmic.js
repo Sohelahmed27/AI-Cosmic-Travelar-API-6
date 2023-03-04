@@ -75,6 +75,8 @@ const singleData =async (id)=>{
 
 const displaySingleData = qualities=>{
       console.log(qualities)
+      // features
+      
       
       document.getElementById('description').innerText = qualities.description;
       document.getElementById('col-1').innerHTML = `<div class='border border-secondary-subtle p-3 text-center'>
@@ -87,14 +89,19 @@ const displaySingleData = qualities=>{
       <h5 class='text-warning text-bold'>${qualities.pricing[2].price}</h5>
       <h5 class='text-info text-bold'>${qualities.pricing[2].plan}</h5></div>`;
      
-      document.getElementById('feature-1').innerHTML= `<li>${qualities.features.feature_name}</li>`
+      document.getElementById('feature-1').innerHTML= `<li>${qualities.features[1].feature_name}</li>
+      <li>${qualities.features[2].feature_name}</li>
+      <li>${qualities.features[3].feature_name}</li>`
 
       document.getElementById('integration').innerHTML= `<li>${qualities.integrations[0]}</li>
       <li>${qualities.integrations[1]}</li>
       <li>${qualities.integrations[2]}</li>`
       
       const modalCard2= document.getElementById('modal-card2');
+
+      modalCard2.innerHTML = "";
       const div = document.createElement('div');
+
       div.innerHTML =`<div  class="card">
       <img src="${qualities.image_link[0] ? qualities.image_link[0]:qualities.logo
       }"
@@ -104,7 +111,7 @@ const displaySingleData = qualities=>{
         <p class="card-text">${qualities.input_output_examples[0].output}</p>
       </div>
     </div>`;
-    modalCard2.appendChild(div);
+     modalCard2.appendChild(div);
     }
      
 
